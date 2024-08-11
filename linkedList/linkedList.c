@@ -8,11 +8,11 @@ struct Node
     int data;
     struct Node *next;
 };
-struct Node *head, *newNode, *temp;
-
+struct Node *head = NULL, *newNode, *tail;
 void createNodeAndInsert()
 {
-    head = 0;
+
+    // struct Node *temp;
     int valueToInsert;
 
     int choice;
@@ -30,14 +30,14 @@ void createNodeAndInsert()
         // Make the newNode next pointer NULL or 0
         newNode->next = NULL;
 
-        if (head == 0)
+        if (head == NULL)
         {
-            head = temp = newNode;
+            head = tail = newNode;
         }
         else
         {
-            temp->next = newNode;
-            temp = newNode;
+            tail->next = newNode;
+            tail = newNode;
         }
         printf("\nDo you want to continue or terminate(1, 0)?\n");
         scanf("%d", &choice);
@@ -47,18 +47,19 @@ void createNodeAndInsert()
 
 void displayList()
 {
-    temp = head;
-    if (temp == NULL)
+    struct Node *current;
+    current = head;
+    if (current == NULL)
     {
         printf("\nList is empty\n");
     }
     else
     {
-        while (temp != NULL)
+        while (current != NULL)
         {
 
-            printf("\n %d\n", temp->data);
-            temp = temp->next;
+            printf("\n %d\n", current->data);
+            current = current->next;
         }
     }
 }
